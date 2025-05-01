@@ -28,14 +28,38 @@ def agregar_tarea(dic_leer):
     with open("To_do.json", "w") as file:
         json.dump(dic_leer, file, indent=4)
     
+    print("\n---Tarea agregada---\n")
 
+#definimos la funcion para marcar tareas como completadas
+def marcar_terminacion(dic_leer):
+    n_tarea = int(input("Que tarea desea marcar como completada?"))
+    n_tarea -=1
+    dic_leer[n_tarea]["completada"]= "si"
+    
+    with open("To_do.json", "w") as file:
+        json.dump(dic_leer, file, indent=4)
+    
+    print("\n---Tarea marcada---\n")
+
+#definimos la funcion para elminar tareas
+def eliminar_tarea(dic_leer):
+    n_tarea = int(input("Que tarea desea eliminar?"))
+    n_tarea-=1
+    del dic_leer[n_tarea]
+   
+    #guardamos la lista actualisada
+    with open("To_do.json", "w") as file:
+        json.dump(dic_leer, file, indent=4)
+
+    print("\n---Tarea eliminada---\n")
+
+
+
+ 
 print("Bienvenido al ToDo manger")
-
-
-
 dic_leer = cargar_lista_to_do()
 while True:
-    print ("¿Que le gusria hacer?")
+    print ("¿Que le gusria hacer?\n1-mostrar las tareas\n2-agregar una taerea\n3-marcar tarea como terminada\n4-eliminar una tarea\n5-salir del programa")
     
     opcion = int(input(":"))
     match opcion:
@@ -43,6 +67,10 @@ while True:
             print(json.dumps(dic_leer, indent=4))
         case 2:
             agregar_tarea(dic_leer)
+        case 3:
+            marcar_terminacion(dic_leer)
+        case 4:
+            eliminar_tarea(dic_leer)
         case 5:
             print("saliendo...")
             break
