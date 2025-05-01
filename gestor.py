@@ -15,7 +15,7 @@ def agregar_tarea(dic_leer):
     
     i = len(dic_leer)+1         
     
-    #creamos un dicionaria para suvir
+    #creamos un dicionario para suvir
     dic_suvir = {
         "id" : i,
         "nombre" : nombre,
@@ -23,7 +23,7 @@ def agregar_tarea(dic_leer):
         "completada" : "no"
     }
 
-    #suvimos el dicionario
+    #subimos el dicionario
     dic_leer.append(dic_suvir)
     with open("To_do.json", "w") as file:
         json.dump(dic_leer, file, indent=4)
@@ -32,7 +32,7 @@ def agregar_tarea(dic_leer):
 
 #definimos la funcion para marcar tareas como completadas
 def marcar_terminacion(dic_leer):
-    n_tarea = int(input("Que tarea desea marcar como completada?"))
+    n_tarea = int(input("Qué tarea desea marcar como completada?"))
     n_tarea -=1
     dic_leer[n_tarea]["completada"]= "si"
     
@@ -53,10 +53,7 @@ def eliminar_tarea(dic_leer):
 
     print("\n---Tarea eliminada---\n")
 
-
-
- 
-print("Bienvenido al ToDo manger")
+print("Bienvenido al ToDo manager")
 dic_leer = cargar_lista_to_do()
 while True:
     print ("¿Que le gusria hacer?\n1-mostrar las tareas\n2-agregar una taerea\n3-marcar tarea como terminada\n4-eliminar una tarea\n5-salir del programa")
@@ -75,7 +72,7 @@ while True:
             print("saliendo...")
             break
         case _:
-            print("Entrada invalido")
+            print("Entrada inválida")
 
 
 
